@@ -24,5 +24,13 @@ const signUp = asyncHandler(async (req, res) => {
     )
     return res.json({ status: true, message: "Recorded Successfully!" })
 })
+const login = asyncHandler(async (req, res) => {
+    const { email, password } = req.body;
+
+    if (!email || !password) {
+        return res.json({ message: "All fields are mandatory!" })
+    }
+})
+
 
 export default signUp;
