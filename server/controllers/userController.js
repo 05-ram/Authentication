@@ -2,7 +2,7 @@ import asyncHandler from "express-async-handler";
 import members from "../model/UserModel.js";
 import bcrypt from 'bcrypt';
 
-const signUp = asyncHandler(async (req, res) => {
+export const signUp = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
@@ -24,13 +24,16 @@ const signUp = asyncHandler(async (req, res) => {
     )
     return res.json({ status: true, message: "Recorded Successfully!" })
 })
-const login = asyncHandler(async (req, res) => {
+export const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
         return res.json({ message: "All fields are mandatory!" })
     }
+
+    const user = await members.findOne({ email });
+    if (user && await bcrypt.compare(password, user.password)) {
+        return res.json({ status: true, message: 'Credentials are correct' })
+    }
+
 })
-
-
-export default signUp;

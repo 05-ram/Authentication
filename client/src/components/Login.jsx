@@ -8,12 +8,14 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate();
-    const handleSubmit = () => {
+    const handleSubmit = (event) => {
+        event.preventDefault();
         axios.post(LOGIN_URL, {
             email, password
         }).then(response => {
-            if (response) {
-                navigate('/dashboard')
+            if (response.data.status) {
+                alert(response.data.message)
+                navigate('/')
             }
         }).catch(err => {
             console.log(err)
@@ -41,3 +43,5 @@ const Login = () => {
 }
 
 export default Login
+
+//48.07
