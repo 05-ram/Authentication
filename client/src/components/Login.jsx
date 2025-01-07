@@ -8,6 +8,7 @@ const Login = () => {
     const [password, setPassword] = useState('')
 
     const navigate = useNavigate();
+    axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post(LOGIN_URL, {
@@ -16,6 +17,9 @@ const Login = () => {
             if (response.data.status) {
                 alert(response.data.message)
                 navigate('/')
+            }
+            else {
+                alert(response.data.message)
             }
         }).catch(err => {
             console.log(err)
@@ -26,10 +30,10 @@ const Login = () => {
             <form onSubmit={handleSubmit}>
 
                 <label htmlFor="email"><b>Email</b></label>
-                <input type="text" placeholder="Enter Email" name="email" id="email" value={email} required onChange={(e) => setEmail(e.target.value)} />
+                <input type="text" placeholder="Enter Email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
 
                 <label htmlFor="psw"><b>Password</b></label>
-                <input type="password" placeholder="Enter Password" name="psw" id="psw" value={password} required onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Enter Password" name="psw" id="psw" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 <button type="submit" className="registerbtn">Login</button>
                 <button type="submit" className="outlinebtn">
@@ -45,3 +49,6 @@ const Login = () => {
 export default Login
 
 //48.07
+
+
+// /-----credentials: true(for backend) ~ axios.defaults.withCredentials = true;(for frontend) ------/
