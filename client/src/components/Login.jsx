@@ -36,6 +36,7 @@ const Login = () => {
                 <input type="password" placeholder="Enter Password" name="psw" id="psw" value={password} onChange={(e) => setPassword(e.target.value)} />
 
                 <button type="submit" className="registerbtn">Login</button>
+                <Link to='/forgot-password'>Forgot Password?</Link>
                 <button type="submit" className="outlinebtn">
                     <Link to='/signup'>
                         Sign Up
@@ -46,9 +47,7 @@ const Login = () => {
     )
 }
 
-export default Login
-
-//48.07
+export default Login;
 
 
 // /-----credentials: true(for backend) ~ axios.defaults.withCredentials = true;(for frontend) ------/

@@ -3,6 +3,7 @@ import Login from "../components/Login";
 import ErrorComp from "../components/ErrorComp";
 import SignUp from "../components/SignUp";
 import Dashboard from "../components/Dashboard";
+import ForgotPassword from "../components/ForgotPassword";
 
 const RouterData = () => {
     const strictRoute = createBrowserRouter([
@@ -18,6 +19,10 @@ const RouterData = () => {
         {
             path: '/signup',
             element: <SignUp />,
+        },
+        {
+            path: '/forgot-password',
+            element: <ForgotPassword />,
         }
     ])
     return strictRoute;

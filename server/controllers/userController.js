@@ -53,3 +53,8 @@ export const loginUser = asyncHandler(async (req, res) => {
     }
 
 })
+
+export const resetUser = asyncHandler(async (req, res) => {
+    const { email } = req.body;
+    const user = await members.findOne({ email })
+})
