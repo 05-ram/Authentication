@@ -4,6 +4,7 @@ import ErrorComp from "../components/ErrorComp";
 import SignUp from "../components/SignUp";
 import Dashboard from "../components/Dashboard";
 import ForgotPassword from "../components/ForgotPassword";
+import ResetPassword from "../components/ResetPassword";
 
 const RouterData = () => {
     const strictRoute = createBrowserRouter([
@@ -23,6 +24,10 @@ const RouterData = () => {
         {
             path: '/forgot-password',
             element: <ForgotPassword />,
+        },
+        {
+            path: '/reset-password/:token',
+            element: <ResetPassword />,
         }
     ])
     return strictRoute;
