@@ -79,7 +79,7 @@ export const resetUser = asyncHandler(async (req, res) => {
         from: 'borntoachieve98@gmail.com',
         to: email,
         subject: 'Reset Password',
-        text: `http://localhost:5003/auth/reset-password/${token}`
+        text: `http://localhost:3001/reset-password/${token}`
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -89,4 +89,13 @@ export const resetUser = asyncHandler(async (req, res) => {
             return res.json({ status: true, message: "Email Sent" })
         }
     });
+})
+export const emailSend = asyncHandler(async (req, res) => {
+    const token = req.params.token;
+    const { password } = req.body;
+    const decoded = await jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    const id = decoded.id;
+    const hashPassword = await bcrypt.hash(password, 10);
+    await members.findByIdAndUpdate(id, { password: hashPassword })
+    return res.json({ status: true, message: 'Password Reset Successful!' })
 })

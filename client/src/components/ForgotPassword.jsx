@@ -12,7 +12,7 @@ const ForgotPassword = () => {
             email
         }).then(response => {
             if (response.data.status) {
-                alert('Reset Successful')
+                alert('Please Check Ur email...')
             }
             else {
                 console.log('')

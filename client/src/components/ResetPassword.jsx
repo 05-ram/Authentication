@@ -15,6 +15,7 @@ const ResetPassword = () => {
         })
             .then(response => {
                 if (response.data.status) {
+                    alert(response.data.message)
                     navigate('/login')
                 }
             })
@@ -25,7 +26,7 @@ const ResetPassword = () => {
     return (
         <div className="container">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="psw"><b>Password</b></label>
+                <label htmlFor="psw"><b>Reset Password</b></label>
                 <input type="password" placeholder="Enter Password" name="psw" id="psw" value={password} required onChange={(e) => setPassword(e.target.value)} />
 
                 <button type="submit" className="registerbtn">Reset</button>
