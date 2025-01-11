@@ -99,3 +99,10 @@ export const emailSend = asyncHandler(async (req, res) => {
     await members.findByIdAndUpdate(id, { password: hashPassword })
     return res.json({ status: true, message: 'Password Reset Successful!' })
 })
+export const verifyUser = asyncHandler((req, res) => {
+    return res.json({ status: true, message: "Authorized" })
+})
+export const logOut = asyncHandler((req, res) => {
+    res.clearCookie('token')
+    return res.json({ status: true, message: "logged out successfully" })
+})
